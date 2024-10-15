@@ -4,8 +4,8 @@ class StringCalculator:
 
     def add(self, number_string):
         """
-            Takes a string of numbers, which can include custom delimiters and 
-            newline characters, and returns their sum.
+        Takes a string of numbers, which can include custom delimiters and
+        newline characters, and returns their sum.
         """
         # If the input is empty, return 0
         if not number_string:
@@ -13,9 +13,9 @@ class StringCalculator:
 
         # If there is only one character, return same number
         if len(str(number_string)) == 1:
-             return int(number_string)
+            return int(number_string)
 
-        delimiter = ','
+        delimiter = ","
         # Check if the number string starts with a custom delimiter pattern
         if number_string.startswith("//"):
             status, number_string, delimiter = self.get_custom_delimiter(number_string)
@@ -31,43 +31,55 @@ class StringCalculator:
 
         # Compute and return the sum of the numbers
         return self.get_number_sum(numbers)
-        
+
     def get_custom_delimiter(self, number_string):
         """
-            Extracts a custom delimiter from the input string based on the pattern
-             Pattern: "//[delimiter]\n[numbers…]"
+        Extracts a custom delimiter from the input string based on the pattern
+         Pattern: "//[delimiter]\n[numbers…]"
         """
-        newline_exists = number_string.find('\n')
+        newline_exists = number_string.find("\n")
         if newline_exists == -1:
-            return False, "Number string must contain a newline for custom delimiter.", ''
-        
-        delimiter_end_index = number_string.index('\n')
+            return (
+                False,
+                "Number string must contain a newline for custom delimiter.",
+                "",
+            )
+
+        delimiter_end_index = number_string.index("\n")
         delimiter = number_string[2:delimiter_end_index].strip()
-        number_string = number_string[delimiter_end_index + 1:]
+        number_string = number_string[delimiter_end_index + 1 :]
         return True, number_string, delimiter
 
     def split_by_delimiter(self, number_string, delimiter):
         """
-            Splits the number string using the provided delimiter.
+        Splits the number string using the provided delimiter.
         """
-        return number_string.replace('\n', delimiter).split(delimiter)
+        return number_string.replace("\n", delimiter).split(delimiter)
 
     def get_number_sum(self, numbers):
         """
-            Compute the sum of the provided number strings, skip any 
-            numbers greater than 1000.
+        Compute the sum of the provided number strings, skip any
+        numbers greater than 1000.
         """
-        return sum(int(num) for num in numbers if num.strip() and int(num) <= 1000 if num.strip().isdigit())
+        return sum(
+            int(num)
+            for num in numbers
+            if num.strip() and int(num) <= 1000
+            if num.strip().isdigit()
+        )
 
     def check_for_negative_numbers(self, numbers):
         """
-            Checks if any number is negative and raise ValueError.
+        Checks if any number is negative and raise ValueError.
         """
         negative_numbers = [num for num in numbers if num and int(num) < 0]
         if negative_numbers:
-            raise ValueError("Negative numbers not allowed: {}".format(','.join([str(num) for num in negative_numbers])))
+            raise ValueError(
+                "Negative numbers not allowed: {}".format(
+                    ",".join([str(num) for num in negative_numbers])
+                )
+            )
 
-    
 
 # calc = StringCalculator()
 # print (calc.add(""))
