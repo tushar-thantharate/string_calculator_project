@@ -9,7 +9,14 @@ class StringCalculator:
         if len(str(numbers)) == 1:
              return int(numbers)
 
-calc = StringCalculator()
+        return sum(int(num) for num in numbers.split(',') if num.strip())
+
+# calc = StringCalculator()
 # print (calc.add(""))
 # print (calc.add(None))
-print (calc.add('1'))
+
+# print (calc.add('1'))
+
+# print (calc.add('1,'))
+# print (calc.add('1,2'))
+# print (calc.add('1,2,3,4,5'))
