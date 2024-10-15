@@ -79,29 +79,3 @@ class StringCalculator:
                     ",".join([str(num) for num in negative_numbers])
                 )
             )
-
-
-# calc = StringCalculator()
-# print (calc.add(""))
-# print (calc.add(None))
-
-# print (calc.add('1'))
-
-# print (calc.add('1,'))
-# print (calc.add('1,2'))
-# print (calc.add('1,2,3,4,5'))
-
-# print (calc.add('1\n'))
-# print (calc.add('1\n2,3'))
-# print (calc.add('1\n2,3\n4,5\n'))
-
-# print (calc.add("//;\n1;2"))
-# # print (calc.add("//*\n1*2"))
-# # print (calc.add("//*\n1*2*3*4*5"))
-# print (calc.add("//*1*2*3*4*5"))
-
-# print (calc.add("1,-2,3"))
-# print (calc.add("1,-2,-3,4"))
-
-# print (calc.add("1001,2"))
-# print (calc.add("1,1001,2,3,4,1002,5"))
