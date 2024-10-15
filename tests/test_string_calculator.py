@@ -53,7 +53,7 @@ class TestStringCalculator(unittest.TestCase):
 
     def test_negative_numbers(self):
         try:
-            self.calculator.add("1,-2,3")
+            self.calc.add("1,-2,3")
         except ValueError as e:
             self.assertTrue("Negative numbers not allowed: -2" in str(e))        
  
@@ -61,7 +61,7 @@ class TestStringCalculator(unittest.TestCase):
         try:
             self.calc.add("1,-2,-3,4")
         except ValueError as e:
-            self.assertTrue("Negative numbers not allowed: -2, -3" in str(e))        
+            self.assertTrue("Negative numbers not allowed: -2,-3" in str(e))        
  
 
 if __name__ == '__main__':

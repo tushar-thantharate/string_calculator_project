@@ -19,6 +19,9 @@ class StringCalculator:
                 return 0
 
         numbers = self.split_by_delimiter(number_string, delimiter)
+
+        self.check_for_negative_numbers(numbers)
+
         return self.get_number_sum(numbers)
         
     def get_custom_delimiter(self, number_string):
@@ -36,6 +39,12 @@ class StringCalculator:
 
     def get_number_sum(self, numbers):
         return sum(int(num) for num in numbers if num.strip())
+
+    def check_for_negative_numbers(self, numbers):
+        negative_numbers = [num for num in numbers if num and int(num) < 0]
+        if negative_numbers:
+            raise ValueError("Negative numbers not allowed: {}".format(','.join([str(num) for num in negative_numbers])))
+
     
 
 calc = StringCalculator()
@@ -56,3 +65,6 @@ calc = StringCalculator()
 # # print (calc.add("//*\n1*2"))
 # # print (calc.add("//*\n1*2*3*4*5"))
 # print (calc.add("//*1*2*3*4*5"))
+
+# print (calc.add("1,-2,3"))
+# print (calc.add("1,-2,-3,4"))
