@@ -41,6 +41,9 @@ class TestStringCalculator(unittest.TestCase):
         result = self.calc.add("//*\n1*2")
         self.assertEqual(result, 3)
 
+        result = self.calc.add("//*\n1*2*3*4*5")
+        self.assertEqual(result, 15)
+
 
 if __name__ == '__main__':
     unittest.main()
