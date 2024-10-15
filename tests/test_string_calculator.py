@@ -26,6 +26,13 @@ class TestStringCalculator(unittest.TestCase):
         result = self.calc.add("1,2,3,4,5")
         self.assertEqual(result, 15)
 
+    def test_newline_delimiter(self):
+        result = self.calc.add("1\n2,3")
+        self.assertEqual(result, 6)
+
+        result = self.calc.add("1\n2,3\n4,5\n")
+        self.assertEqual(result, 15)
+
 
 if __name__ == '__main__':
     unittest.main()
