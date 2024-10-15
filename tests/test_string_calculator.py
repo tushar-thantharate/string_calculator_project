@@ -47,8 +47,22 @@ class TestStringCalculator(unittest.TestCase):
         result = self.calc.add("//*\n1*2*3*4*5")
         self.assertEqual(result, 15)
 
+        # missing newline
         result = self.calc.add("//*1*2*3*4*5")
         self.assertEqual(result, 0)
+
+    def test_negative_numbers(self):
+        try:
+            self.calculator.add("1,-2,3")
+        except ValueError as e:
+            self.assertTrue("Negative numbers not allowed: -2" in str(e))        
+ 
+        # multiple negative numbers
+        try:
+            self.calc.add("1,-2,-3,4")
+        except ValueError as e:
+            self.assertTrue("Negative numbers not allowed: -2, -3" in str(e))        
+ 
 
 if __name__ == '__main__':
     unittest.main()
