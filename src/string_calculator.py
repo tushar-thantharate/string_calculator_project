@@ -38,7 +38,8 @@ class StringCalculator:
         return number_string.replace('\n', delimiter).split(delimiter)
 
     def get_number_sum(self, numbers):
-        return sum(int(num) for num in numbers if num.strip())
+        # skip numbers greater than 1000 in calcualtion
+        return sum(int(num) for num in numbers if num.strip() and int(num) <= 1000 if num.strip().isdigit())
 
     def check_for_negative_numbers(self, numbers):
         negative_numbers = [num for num in numbers if num and int(num) < 0]
@@ -68,3 +69,6 @@ calc = StringCalculator()
 
 # print (calc.add("1,-2,3"))
 # print (calc.add("1,-2,-3,4"))
+
+print (calc.add("1001,2"))
+print (calc.add("1,1001,2,3,4,1002,5"))
