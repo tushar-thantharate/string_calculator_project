@@ -14,16 +14,22 @@ class StringCalculator:
 
         delimiter = ','
         if number_string.startswith("//"):
-            number_string, delimiter = self.get_custom_delimiter(number_string)
-        
+            status, number_string, delimiter = self.get_custom_delimiter(number_string)
+            if not status:
+                return 0
+
         numbers = self.split_by_delimiter(number_string, delimiter)
         return self.get_number_sum(numbers)
         
     def get_custom_delimiter(self, number_string):
+        newline_exists = number_string.find('\n')
+        if newline_exists == -1:
+            return False, "Number string must contain a newline for custom delimiter.", ''
+        
         delimiter_end_index = number_string.index('\n')
-        delimiter = number_string[2:delimiter_end_index]
+        delimiter = number_string[2:delimiter_end_index].strip()
         number_string = number_string[delimiter_end_index + 1:]
-        return number_string, delimiter
+        return True, number_string, delimiter
 
     def split_by_delimiter(self, number_string, delimiter):
         return number_string.replace('\n', delimiter).split(delimiter)
@@ -47,5 +53,6 @@ calc = StringCalculator()
 # print (calc.add('1\n2,3\n4,5\n'))
 
 # print (calc.add("//;\n1;2"))
-# print (calc.add("//*\n1*2"))
-# print (calc.add("//*\n1*2*3*4*5"))
+# # print (calc.add("//*\n1*2"))
+# # print (calc.add("//*\n1*2*3*4*5"))
+# print (calc.add("//*1*2*3*4*5"))
