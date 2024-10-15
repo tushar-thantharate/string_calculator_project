@@ -34,5 +34,13 @@ class TestStringCalculator(unittest.TestCase):
         self.assertEqual(result, 15)
 
 
+    def test_custom_delimiter(self):
+        result = self.calc.add("//;\n1;2")
+        self.assertEqual(result, 3)
+
+        result = self.calc.add("//*\n1*2")
+        self.assertEqual(result, 3)
+
+
 if __name__ == '__main__':
     unittest.main()
