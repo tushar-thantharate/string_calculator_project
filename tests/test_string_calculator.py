@@ -63,6 +63,14 @@ class TestStringCalculator(unittest.TestCase):
         except ValueError as e:
             self.assertTrue("Negative numbers not allowed: -2,-3" in str(e))        
  
+    def test_skip_large_numbers(self):
+        # skip numbers greater than 1000 in calcualtion
+        result = self.calc.add("1001,2")
+        self.assertEqual(result, 2)
+
+        result = self.calc.add("1,1001,2,3,4,1002,5")
+        self.assertEqual(result, 15)
+
 
 if __name__ == '__main__':
     unittest.main()
